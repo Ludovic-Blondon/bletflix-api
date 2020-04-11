@@ -1,0 +1,21 @@
+api_platform:
+    # title of th API.
+    title:
+        bletflix-api
+    # The description of the API.
+    description:
+        'streaming online'
+
+    # The version of the API.
+    version: '1.2.0'
+
+    # Set this to false if you want Webby to disappear.
+    show_webby: false
+
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+
