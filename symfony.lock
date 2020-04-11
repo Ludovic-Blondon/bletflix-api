@@ -1,4 +1,7 @@
 {
+    "alchemy/binary-driver": {
+        "version": "v5.2.0"
+    },
     "api-platform/api-pack": {
         "version": "v1.2.2"
     },
@@ -107,6 +110,9 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "fig/link-util": {
         "version": "1.1.0"
     },
@@ -131,6 +137,9 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+    "neutron/temporary-filesystem": {
+        "version": "2.4"
+    },
     "nikic/php-parser": {
         "version": "v4.4.0"
     },
@@ -142,6 +151,9 @@
     },
     "php": {
         "version": "7.3"
+    },
+    "php-ffmpeg/php-ffmpeg": {
+        "version": "v0.15"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
@@ -190,6 +202,18 @@
         "files": [
             "bin/console",
             "config/bootstrap.php"
+        ]
+    },
+    "symfony/debug-bundle": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "f8863cbad2f2e58c4b65fa1eac892ab189971bea"
+        },
+        "files": [
+            "config/packages/dev/debug.yaml"
         ]
     },
     "symfony/dependency-injection": {
@@ -298,6 +322,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.15.0"
+    },
+    "symfony/process": {
+        "version": "v5.0.7"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.4"

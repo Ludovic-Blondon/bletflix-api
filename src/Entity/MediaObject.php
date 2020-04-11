@@ -72,7 +72,7 @@ class MediaObject
      * @var File|null
      *
      * @Assert\NotNull(groups={"media_object_create"})
-     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath")
+     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath", mimeType="mimeType", size="fileSize")
      */
     public $file;
 
@@ -83,8 +83,44 @@ class MediaObject
      */
     public $filePath;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"media_object_read"})
+     */
+    private $mimeType;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Groups({"media_object_read"})
+     */
+    private $fileSize;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getMimeType(): ?string
+    {
+        return $this->mimeType;
+    }
+
+    public function setMimeType(?string $mimeType): self
+    {
+        $this->mimeType = $mimeType;
+
+        return $this;
+    }
+
+    public function getFileSize(): ?int
+    {
+        return $this->fileSize;
+    }
+
+    public function setFileSize(?int $fileSize): self
+    {
+        $this->fileSize = $fileSize;
+
+        return $this;
     }
 }
