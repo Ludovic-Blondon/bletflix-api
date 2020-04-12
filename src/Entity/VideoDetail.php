@@ -36,6 +36,12 @@ class VideoDetail
      */
     private $mediaObject;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"media_object_read"})
+     */
+    private $codec;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +79,18 @@ class VideoDetail
     public function setMediaObject(?MediaObject $mediaObject): self
     {
         $this->mediaObject = $mediaObject;
+
+        return $this;
+    }
+
+    public function getCodec(): ?string
+    {
+        return $this->codec;
+    }
+
+    public function setCodec(string $codec): self
+    {
+        $this->codec = $codec;
 
         return $this;
     }
