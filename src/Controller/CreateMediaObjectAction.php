@@ -35,8 +35,6 @@ final class CreateMediaObjectAction
             throw new BadRequestHttpException('"file" is required');
         }
 
-        dump($uploadedFile);
-
         $mediaObject = new MediaObject();
         $mediaObject->file = $uploadedFile;
 
@@ -61,8 +59,8 @@ final class CreateMediaObjectAction
                 $first = $ffprobe
                     ->streams($file)
                     ->videos()
-                    ->first();
-
+                    ->first()
+                ;
 
                 dump($ffprobe->format($file));
 
@@ -74,7 +72,6 @@ final class CreateMediaObjectAction
                 ;
 
                 $this->em->persist($video_detail);
-
                 break;
         }
     }
