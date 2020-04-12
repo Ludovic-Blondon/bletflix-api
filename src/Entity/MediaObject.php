@@ -72,7 +72,7 @@ class MediaObject
      * @var File|null
      *
      * @Assert\NotNull(groups={"media_object_create"})
-     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath", mimeType="mimeType", size="fileSize")
+     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath", mimeType="mimeType", size="fileSize",  originalName="originalName")
      */
     public $file;
 
@@ -94,6 +94,30 @@ class MediaObject
      * @Groups({"media_object_read"})
      */
     private $fileSize;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"media_object_read"})
+     */
+    private $originalName;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\VideoDetail", mappedBy="mediaObject", cascade={"persist", "remove"})
+     * @Groups({"media_object_read"})
+     */
+    private $videoDetail;
+
+    public function getOriginalName(): ?string
+    {
+        return $this->originalName;
+    }
+
+    public function setOriginalName(?string $originalName): self
+    {
+        $this->originalName = $originalName;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +144,24 @@ class MediaObject
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
+        return $this;
+    }
+
+    public function getVideoDetail(): ?VideoDetail
+    {
+        return $this->videoDetail;
+    }
+
+    public function setVideoDetail(?VideoDetail $videoDetail): self
+    {
+        $this->videoDetail = $videoDetail;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newMediaObject = null === $videoDetail ? null : $this;
+        if ($videoDetail->getMediaObject() !== $newMediaObject) {
+            $videoDetail->setMediaObject($newMediaObject);
+        }
 
         return $this;
     }
