@@ -57,6 +57,18 @@ class User implements UserInterface
      */
     private $apiTokens;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\MediaObject", cascade={"persist", "remove"})
+     * @Groups({"get_user"})
+     */
+    private $avatar;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Groups({"get_user"})
+     */
+    private $online;
+
     public function getId(): ?string
     {
         return $this->id;
@@ -174,6 +186,30 @@ class User implements UserInterface
                 $apiToken->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?MediaObject
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?MediaObject $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
 
         return $this;
     }
