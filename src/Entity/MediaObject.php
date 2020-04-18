@@ -48,6 +48,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *     }
  * )
  * @Vich\Uploadable
+ * @ORM\EntityListeners({"App\Doctrine\MediaObjectListener"})
  */
 class MediaObject
 {
@@ -164,5 +165,15 @@ class MediaObject
         }
 
         return $this;
+    }
+
+    public function originalMediaLocation()
+    {
+        $source = $this->file->getRealPath();
+        if($source)
+        {
+            return str_replace(realpath('.'),'',$source);
+        }
+        return null;
     }
 }

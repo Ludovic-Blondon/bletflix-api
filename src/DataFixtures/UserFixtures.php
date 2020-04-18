@@ -27,7 +27,9 @@ class UserFixtures extends Fixture
             ->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'test'
-            ));
+            ))
+            ->setOnline(false)
+        ;
 
         $manager->persist($user);
 
@@ -39,7 +41,9 @@ class UserFixtures extends Fixture
             ->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'test'
-            ));
+            ))
+            ->setOnline(false)
+        ;
         $manager->persist($user);
 
         $manager->flush();
