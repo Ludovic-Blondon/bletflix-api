@@ -57,6 +57,9 @@ class MediaObjectListener
         //         $this->entityManager->remove($entity);
         //     }
         // }
+
+        //preg_match('/E(\d+)\./', 'Vikings.S05E14.EXTENDED.MULTI.1080p.BluRay.x264.AC3-LCDS.mkv', $m);
+        //dump($m);  (int)$m[1] => 14
     }
 
     /** @ORM\PreUpdate */

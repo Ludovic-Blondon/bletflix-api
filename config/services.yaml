@@ -28,3 +28,7 @@ services:
 
     App\Doctrine\MediaObjectListener:
         tags: [doctrine.orm.entity_listener]
+
+    App\Serializer\MediaObjectNormalizer:
+        decorates: 'api_platform.jsonld.normalizer.item'
+        arguments: [ '@App\Serializer\MediaObjectNormalizer.inner' ]
