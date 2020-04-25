@@ -36,10 +36,10 @@ final class MediaObjectNormalizer implements NormalizerInterface, DenormalizerIn
         $data = $this->decorated->normalize($object, $format, $context);
         if($object instanceof \App\Entity\MediaObject)
         {
+            $basepath = $this->request->getSchemeAndHttpHost();
 
-            $realPath = $this->request->getSchemeAndHttpHost().$data['contentUrl'];
-
-            $data['contentUrl'] = $realPath;
+            $original_path = $object->originalMediaLocation();
+            $data['contentUrl'] = $original_path ? $basepath.str_replace('\\','/',$original_path) : null;
         }
 
         return $data;

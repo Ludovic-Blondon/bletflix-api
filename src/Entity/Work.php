@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -15,6 +16,7 @@ class Work
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get_prod"})
      */
     private $id;
 
@@ -25,31 +27,37 @@ class Work
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Season", inversedBy="works")
+     * @Groups({"get_prod"})
      */
     private $season;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\MediaObject", cascade={"persist", "remove"})
+     * @Groups({"get_prod"})
      */
     private $mediaObject;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"get_prod"})
      */
     private $languages = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"get_prod"})
      */
     private $subtitles = [];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"get_prod"})
      */
     private $country;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"get_prod"})
      */
     private $number;
 

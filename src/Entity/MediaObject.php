@@ -65,7 +65,7 @@ class MediaObject
      * @var string|null
      *
      * @ApiProperty(iri="http://schema.org/contentUrl")
-     * @Groups({"media_object_read"})
+     * @Groups({"media_object_read", "get_prod"})
      */
     public $contentUrl;
 
@@ -91,7 +91,7 @@ class MediaObject
     private $mimeType;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint")
      * @Groups({"media_object_read"})
      */
     private $fileSize;

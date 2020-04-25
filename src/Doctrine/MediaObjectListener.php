@@ -2,6 +2,7 @@
 
 namespace App\Doctrine;
 
+use App\Entity\Work;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -37,29 +38,28 @@ class MediaObjectListener
     /** @ORM\PostPersist */
     public function postPersistHandler(MediaObject $entity, LifecycleEventArgs $event)
     {
-        //exit('PostPersist');
-        //     $name = $entity->getOriginalName();
-        //     $status = 0;
-        //     $tagId = $this->request->request->get('tagId');
-        //     $asset = new Asset();
-        //     $asset->setCurrentMedia($entity->getId());
-        //     $asset->addMedia($entity);
-        //     $asset->setAccount($account);
-        //     $asset->setStatus($status);
-        //     $asset->setUsageName($name);
-
-        // if (isset($asset)) {
-        //     //Delete du media si la création de l'asset échoue
-        //     try {
-        //         $this->entityManager->persist($asset);
-        //         $this->entityManager->flush();
-        //     } catch (\Exception $e) {
-        //         $this->entityManager->remove($entity);
-        //     }
-        // }
-
-        //preg_match('/E(\d+)\./', 'Vikings.S05E14.EXTENDED.MULTI.1080p.BluRay.x264.AC3-LCDS.mkv', $m);
-        //dump($m);  (int)$m[1] => 14
+//        $type = $this->request->request->get('type');
+//
+//        if (!empty(($type)))
+//        {
+//            $id = $this->request->request->get('id');
+//
+//            $work = new Work();
+//            $work->setMediaObject($entity);
+//
+//            switch ($type) {
+//                case 'movie':
+//                    $work->setProduction($this->entityManager->getReference('Production', $id));
+//                    break;
+//                case 'serie':
+//                    $work->setSeason($this->entityManager->getReference('Season', $id));
+//                    break;
+//
+//                default:
+//                    # code...
+//                    break;
+//            }
+//        }
     }
 
     /** @ORM\PreUpdate */

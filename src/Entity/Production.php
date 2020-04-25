@@ -6,9 +6,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"get_prod"}, "enable_max_depth"=true},
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"type": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\ProductionRepository")
  */
 class Production
@@ -17,11 +24,13 @@ class Production
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get_prod"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get_prod"})
      */
     private $name;
 
@@ -32,11 +41,13 @@ class Production
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"get_prod"})
      */
     private $year;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\MediaObject", cascade={"persist", "remove"})
+     * @Groups({"get_prod"})
      */
     private $mediaObject;
 
@@ -47,11 +58,13 @@ class Production
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Season", mappedBy="production")
+     * @Groups({"get_prod"})
      */
     private $seasons;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Work", mappedBy="production", cascade={"persist", "remove"})
+     * @Groups({"get_prod"})
      */
     private $work;
 
