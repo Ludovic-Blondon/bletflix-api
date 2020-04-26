@@ -38,7 +38,7 @@ class VideoDetail
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"media_object_read"})
+     * @Groups({"media_object_read", "get_prod"})
      */
     private $codec;
 

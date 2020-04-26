@@ -86,7 +86,7 @@ class MediaObject
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"media_object_read"})
+     * @Groups({"media_object_read", "get_prod"})
      */
     private $mimeType;
 
@@ -104,7 +104,7 @@ class MediaObject
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\VideoDetail", mappedBy="mediaObject", cascade={"persist", "remove"})
-     * @Groups({"media_object_read"})
+     * @Groups({"media_object_read", "get_prod"})
      */
     private $videoDetail;
 
